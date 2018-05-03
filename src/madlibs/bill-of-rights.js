@@ -2,7 +2,7 @@
 // are wrapped in %&<term>&% will be madlib blanks
 module.exports = `
 Number One
-Freedom of religion, speech, and %&yourFavoriteRight&%,
+Freedom of religion, speech, and %&your favorite right&%,
 Plus you can assemble in crowds and %&verb&%.
 
 Number Two
@@ -19,7 +19,7 @@ Unless people have a warrant to arrest me.
 
 Number Five
 If you arrest me, respect me.
-Sorry, %&yourName&%, there's no Double Jeopardy.
+Sorry, %&your name&%, there's no Double Jeopardy.
 What'd you do after school?
 "I plead the fifth."
 What'd you do after that, dude?
@@ -28,7 +28,7 @@ I don't have to incriminate myself or risk my health,
 Whenever I'm in trouble, I just plead the fifth.
 
 Number Six
-You must process me %&wordEndingWithLy&%.
+You must process me %&word ending with ly&%.
 
 Number Seven
 In front of my peers on the jury.
