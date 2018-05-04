@@ -38,7 +38,7 @@ class MadlibForm extends Component {
           {
             Object.keys(fields).map(
               field => (
-                <label>
+                <label key={field}>
                   {field}: <input
                     value={fields[field]}
                     onChange={
