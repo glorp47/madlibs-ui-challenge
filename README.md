@@ -7,7 +7,14 @@ It won't be highly educational, but with your help, it'll at least have a good U
 
 Here's a live hosted demo of this functionality: https://flocabulary.github.io/madlibs-ui-challenge/
 
-It's functional, but it clearly needs some styling and finessing. A Flocabulary designer has provided a set of mocks for how the feature should look and feel. Those mocks can be seen here: https://drive.google.com/drive/folders/1Sq946n18SD2QJTdwRXPp8Tfq_Uvrr2Zh?usp=sharing . Your task is to make the feature match the mocks. Where elements change size or color, care should be taken to smoothly transition by usage of CSS features like `transition`, `animation`.
+It's functional, but it clearly needs some styling and finessing. A Flocabulary designer has provided a set of mocks for how the feature should look and feel. Those mocks can be seen here:
+https://drive.google.com/drive/folders/1Sq946n18SD2QJTdwRXPp8Tfq_Uvrr2Zh?usp=sharing
+
+## Your Tasks
+
+1. Visually make the feature match the mocks. Where elements change size or color, care should be taken to smoothly transition by usage of CSS features like `transition`, `animation`. The mocks may leave some details out, and here's where you have a chance to show your ingenuity.
+
+2. You'll see that there are a couple fields (`number` and `word ending in -ly` which could use a little more validation. Build in validation that enforces that the supplied values for the former is a number and for the latter ends with -ly.
 
 ### follow these directions:
 0. install Node.js https://nodejs.org/en/download/
