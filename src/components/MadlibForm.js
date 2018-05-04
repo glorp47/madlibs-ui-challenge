@@ -43,7 +43,7 @@ class MadlibForm extends Component {
                     value={fields[field]}
                     onChange={
                       e => this.setState({
-                        fields: Object.assign(fields, {[field]: e.target.value})
+                        fields: Object.assign({}, fields, {[field]: e.target.value})
                       })
                     }
                   />
