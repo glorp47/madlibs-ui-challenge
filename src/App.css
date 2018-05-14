@@ -1,5 +1,5 @@
-label {
-  display: block;
+span.error {
+  color: red;
 }
 
 .madlib-line {
