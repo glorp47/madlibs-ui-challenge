@@ -26,7 +26,12 @@ class MadlibForm extends Component {
 
   submitDisabled() {
     const {fields} = this.state;
-    return Object.keys(fields).filter(key => !fields[key]).length
+    return Object.keys(fields).filter(key => !this.validateField(key, fields[key])).length;
+  };
+
+  validateField(fieldName, value) {
+    // default validation: value cannot be blank.
+    return !!value;
   };
 
   renderMadlibForm() {
