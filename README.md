@@ -14,7 +14,7 @@ https://drive.google.com/drive/folders/1Sq946n18SD2QJTdwRXPp8Tfq_Uvrr2Zh?usp=sha
 
 1. Visually make the feature match the mocks. Where elements change size or color, care should be taken to smoothly transition by usage of CSS features like `transition`, `animation`. The mocks may leave some details out, and here's where you have a chance to show your ingenuity.
 
-2. You'll see that there are a couple fields (`number` and `word ending in -ly` which could use a little more validation. Build in validation that enforces that the supplied values for the former is a number and for the latter ends with -ly.
+2. You'll see that there are a couple fields (`number` and `word ending in -ly`) which could use a little more validation. For the `number` field, ensure that a number is provided. For the field `word ending in -ly`, ensure that the provided value does indeed end with the letters `ly`.
 
 ### follow these directions:
 0. install Node.js https://nodejs.org/en/download/
