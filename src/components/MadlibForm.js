@@ -6,21 +6,18 @@ class MadlibForm extends Component {
 
   getInitialState() {
     return {
-      // initialize error messages object with default value so
-      // form cannot be submitted before user input
       fields: this.getFormFieldsFromMadlib(),
-      errorMessages: {},
-      fieldsTouched: [],
+      userInput: {},
       submitted: false
     };
   };
 
   getFormFieldsFromMadlib() {
-    const fields = {};
+    const fields = [];
     let result = regex.exec(this.props.madlib);
     while (result) {
       // null represents value before user input
-      fields[result[1]] = '';
+      fields.push(result[1]);
       result = regex.exec(this.props.madlib);
     }
     return fields;
@@ -31,20 +28,14 @@ class MadlibForm extends Component {
   };
 
   submitDisabled() {
-    const {errorMessages, fields, fieldsTouched} = this.state;
-    return (
+    const {fields, userInput} = this.state;
       // submit disabled if not all fields have been touched
-      fieldsTouched.length !== Object.keys(fields).length ||
-      // or there are error messages for fields
-      Object.keys(errorMessages).filter(field => errorMessages[field].length).length
-    );
+    if (Object.keys(userInput).length !== fields.length) return true;
+    const errorMessages = this.getErrorMessages();
+    return Object.keys(errorMessages).filter(field => errorMessages[field].length).length;
   };
 
   validateField(fieldName, value) {
-    const {fieldsTouched} = this.state;
-    // don't validate untouched fields
-    if (fieldsTouched.indexOf(fieldName) === -1) return;
-
     const errors = [];
 
     // default validation: value cannot be blank.
@@ -53,41 +44,38 @@ class MadlibForm extends Component {
         'Field cannot be blank'
       );
     }
+
     return errors;
   };
 
-  setErrorMessages() {
-    const {fields} = this.state;
-    this.setState({
-      errorMessages: Object.keys(fields).reduce(
-        (errors, fieldName) => Object.assign(
-          errors,
-          {[fieldName]: this.validateField(fieldName, fields[fieldName])}
-        ),
-        {}
-      )
-    });
+  getErrorMessages() {
+    const {userInput} = this.state;
+    return Object.keys(userInput).reduce(
+      (errors, fieldName) => Object.assign(
+        errors,
+        {[fieldName]: this.validateField(fieldName, userInput[fieldName])}
+      ),
+      {}
+    );
   };
 
   renderMadlibForm() {
-    const {errorMessages, fields, fieldsTouched} = this.state;
+    const {fields, userInput} = this.state;
+    const errorMessages = this.getErrorMessages();
     return (
       <div className='madlib-form'>
         <h2>Fill out the form below to create your madlib</h2>
         <form onSubmit={e => this.setState({submitted: true})}>
           {
-            Object.keys(fields).map(
-              field => (
-                <div key={field}>
+            fields.map(
+              (field, index) => (
+                <div key={index}>
                   <label>
                     {field}: <input
-                      value={fields[field]}
+                      value={userInput[field] || ''}
                       onChange={
                         e => this.setState({
-                          fields: Object.assign({}, fields, {[field]: e.target.value}),
-                          fieldsTouched: fieldsTouched.filter(
-                            touchedField => touchedField !== field
-                          ).concat([field])
+                          userInput: Object.assign(userInput, {[field]: e.target.value}),
                         }, this.setErrorMessages)
                       }
                     />
@@ -118,16 +106,16 @@ class MadlibForm extends Component {
       <div className='madlib-filled-in'>
         {
           madlib.split('\n').map(
-            (line, i) => (
+            (line, index1) => (
               <span
-                key={`madlibline${i}`}
+                key={index1}
                 className='madlib-line'
               >
                 {
                   line.split(regex).map(
-                    chunk => (
+                    (chunk, index2) => (
                       <span
-                        key={`${chunk}${i}`}
+                        key={index2}
                         className={
                           fields[chunk]
                           ? 'user-submitted-value'
@@ -143,7 +131,7 @@ class MadlibForm extends Component {
             )
           )
         }
-        <button onClick={this.initializeMadlibForm}>submit</button>
+        <button onClick={e => this.initializeMadlibForm()}>start over</button>
       </div>
     )
   };
