@@ -44,6 +44,24 @@ class MadlibForm extends Component {
         'Field cannot be blank'
       );
     }
+    switch(fieldName) {
+      case "word ending with ly":
+        if(value.slice(-2) !== "ly" && value) {
+          errors.push(
+            'You must enter a word ending in -"ly"'
+          )
+        }
+      break;
+      case "number":
+        if(isNaN(Number(value)) && value) {
+          errors.push(
+            "You must enter a number"
+          )
+        }
+      break;
+      default:
+      break;
+    }
 
     return errors;
   };
@@ -100,7 +118,7 @@ class MadlibForm extends Component {
   };
 
   renderFilledInMadlib() {
-    const {fields} = this.state;
+    const {fields, userInput} = this.state;
     const {madlib} = this.props;
     return (
       <div className='madlib-filled-in'>
@@ -122,7 +140,7 @@ class MadlibForm extends Component {
                           : ''
                         }
                       >
-                        {fields[chunk] || chunk}
+                        {userInput[chunk] || chunk}
                       </span>
                     )
                   )
