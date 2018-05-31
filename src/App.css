@@ -1,16 +1,156 @@
 span.error {
   color: red;
+  padding: 5px;
 }
 
-.madlib-line {
+.madlib-filled-container {
+    display: flex;
+    height: 81vh;
+    flex: 2;
+    flex-flow: column wrap;
+    padding-left: 16%;
+}
+
+.madlib-filled-line {
   display: block;
   height: 20px;
+  font-weight: 700;
+  padding: 5px 0px;
 }
 
-.madlib-line.last-of-chunk + .madlib-line {
+.madlib-filled-line.last-of-chunk + .madlib-line {
   display: inline-block;
 }
 
 .user-submitted-value {
-  text-decoration: underline;
+  background-color: #00a65b;
+  color: white;
+}
+
+.madlib-form {
+  color: white;
+  background-color: #00a65b;
+  text-align: center;
+  margin: 0 auto;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  top: 40%;
+  left: 40%;
+  transform: translate(-40%, -40%);
+}
+
+.wrapper {
+  background-color: #00a65b;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100vh;
+}
+
+input {
+  color: white;
+  background-color: transparent;
+  border-width: 0px 0px 2px 0px;
+  font-size: 32px;
+  width: 25%;
+}
+
+input:focus {
+  outline: 0
+}
+
+.madlib-line {
+  padding: 5px;
+  padding-bottom: 20px;
+  font-size: 26px;
+}
+
+.madlib-completed-line {
+
+    padding: 5px;
+    padding-bottom: 10px;
+    font-size: 26px;
+}
+
+.centered-text {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.done {
+  -webkit-animation:bounceIn 1s;
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity: 1;
+  font-size: 32px;}
+  100% {opacity: 0.3;
+  font-size: 26px;}
+}
+
+@keyframes fadeIn {
+  0% {opacity: 1;
+  font-size: 32px;}
+  100% {opacity: 0.3;
+  font-size: 26px;}
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+.submit-button {
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 13px;
+}
+
+.start-button {
+    margin-top: 15px;
+    height: 40px;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 13px;
+    color: #00a65b;
+    border-color: #32ba81;
+}
+
+.start-button:hover {
+  color: green;
+  border-color: green;
+}
+
+.submit-button:hover {
+  font-weight: bold;
+  border-width: thin;
+  border-color: gray;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.pointer {
+  cursor: pointer
+}
+
+.active {
+  font-size: 32px;
+}
+
+.filled-in-header {
+  color: #00a65b;
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 0px;
 }

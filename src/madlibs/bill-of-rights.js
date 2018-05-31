@@ -1,7 +1,7 @@
 // The terms that
 // are wrapped in %&<term>&% will be madlib blanks
-module.exports = `
-Number One
+module.exports =
+`Number One
 Freedom of religion, speech, and %&your favorite right&%,
 Plus you can assemble in crowds and %&verb&%.
 
